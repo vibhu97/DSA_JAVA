@@ -113,5 +113,65 @@ public class SinglyLinkedList {
 		}
 		
 	}
+	
+	public int removeFirst() throws Exception {
+		
+		if(size==0)
+			throw new Exception("Invalid Index");
+		else if(size==1) {
+			int data=head.data;
+			head=null;
+			tail=null;
+			size--;
+			return data;
+			
+		}
+		else {
+			int data=head.data;
+			head=head.next;
+			size--;
+			return data;
+		}
+	}
+	
+	public int removeLast() throws Exception {
+		if(size==0)
+			throw new Exception("Invalid Index");
+		else if(size==1) {
+			int data=head.data;
+			head=null;
+			tail=null;
+			size--;
+			return data;
+			
+		}
+		else {
+			Node n=getNodeAt(size-2);
+			int data=n.data;
+			tail=n;
+			tail.next=null;
+			size--;
+			return data;
+		}
+		
+	}
+	public int removeAt(int index) throws Exception {
+		if(size<=0 || index>=size)
+			throw new Exception("Invalid Index");
+		else if(index==0)
+			return removeFirst();
+		else if(index==size-1)
+			return removeLast();
+		else {
+			Node n1=getNodeAt(index-1);
+			Node n2=getNodeAt(index+1);
+			int data=n1.next.data;
+			n1.next=n2;
+			size--;
+			return data;
+			
+		}
+		
+	}
 
 }
