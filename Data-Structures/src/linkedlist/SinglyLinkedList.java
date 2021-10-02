@@ -77,5 +77,41 @@ public class SinglyLinkedList {
 		}
 			
 	}
+	private Node getNodeAt(int index) throws Exception {
+		if(size==0)
+			throw new Exception("LL is Empty");
+		else if(index<0 || index>=size)
+			throw new Exception("Invalid Index");
+		else {
+			Node temp=new Node();
+			temp=head;
+			for(int i=0;i<index;i++)
+				temp=temp.next;
+			return temp;
+				
+		}
+			
+	}
+	
+	public void addAt(int index,int item) throws Exception {
+		if(index<0 || index>size)
+			throw new Exception("Invalid Index");
+		else if(index==0)
+			add(item);
+		else if(index==size)
+			append(item);
+		else {
+			Node n=new Node();
+			n.data=item;
+			Node prev=getNodeAt(index-1);
+			Node next=getNodeAt(index+1);
+			prev.next=n;
+			n.next=next;
+			
+			size++;
+			
+		}
+		
+	}
 
 }
