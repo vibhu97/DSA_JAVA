@@ -173,5 +173,33 @@ public class SinglyLinkedList {
 		}
 		
 	}
+	public void reverse() throws Exception {
+		int left=0;
+		int right=size-1;
+		while(left<right) {
+			Node ln=getNodeAt(left);
+			Node rn=getNodeAt(right);
+			int temp=ln.data;
+			ln.data=rn.data;
+			rn.data=temp;
+			left++;
+			right--;
+		}
+	}
+	
+	public void reversePointer() {
+		Node prev=head;
+		Node current=head.next;
+		while(current!=null) {
+			Node next=current.next;
+			current.next=prev;
+			prev=current;
+			current=next;
+		}
+		Node temp=head;
+		head=tail;
+		tail=temp;
+		tail.next=null;
+	}
 
 }
